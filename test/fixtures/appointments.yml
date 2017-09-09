@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_time: 2017-09-09 18:40:23
+  to_time: 2017-09-09 18:40:23
+
+two:
+  from_time: 2017-09-09 18:40:23
+  to_time: 2017-09-09 18:40:23
