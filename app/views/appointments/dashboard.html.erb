@@ -1,0 +1,24 @@
+<div id='calendar'></div>
+
+
+<% content_for :javascript do %>
+<script>
+  $(document).ready(function() {
+
+    $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next',
+        center: 'title',
+        right: 'month,basicWeek,today'
+      },
+      editable: true,
+			eventLimit: true, // allow "more" link when too many events
+      events: <%= @appointment_events %>,
+      dayClick: function(clickedDate) {
+        window.location = "/appointments/new?click=" + clickedDate;
+      }
+    });
+
+  });
+</script>
+<% end %>

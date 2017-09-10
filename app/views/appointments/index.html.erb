@@ -5,6 +5,8 @@
 <table>
   <thead>
     <tr>
+      <th>Reason</th>
+      <th>Date</th>
       <th>From time</th>
       <th>To time</th>
       <th colspan="3"></th>
@@ -14,8 +16,10 @@
   <tbody>
     <% @appointments.each do |appointment| %>
       <tr>
-        <td><%= appointment.from_time %></td>
-        <td><%= appointment.to_time %></td>
+        <td><%= appointment.reason %></td>
+        <td><%= appointment.date %></td>
+        <td><%= appointment.start_time %></td>
+        <td><%= appointment.end_time %></td>
         <td><%= link_to 'Show', appointment %></td>
         <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
         <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

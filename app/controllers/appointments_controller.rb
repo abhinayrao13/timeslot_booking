@@ -1,5 +1,10 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+  before_action :set_date, only: [:new, :create]
+
+  def dashboard
+    @appointment_events = Appointment.get_events_data
+  end
 
   # GET /appointments
   # GET /appointments.json
@@ -67,8 +72,12 @@ class AppointmentsController < ApplicationController
       @appointment = Appointment.find(params[:id])
     end
 
+    def set_date
+      @clicked_date = params[:click].blank? ? DateTime.now.to_i*1000 : Time.at(params[:click].to_i).to_datetime.to_i
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def appointment_params
-      params.require(:appointment).permit(:from_time, :to_time)
+      params.require(:appointment).permit(:reason, :date, :start_time, :end_time)
     end
 end

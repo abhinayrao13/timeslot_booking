@@ -1,13 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Reason:</strong>
+  <%= @appointment.reason %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @appointment.date %>
+</p>
+
+<p>
   <strong>From time:</strong>
-  <%= @appointment.from_time %>
+  <%= @appointment.start_time %>
 </p>
 
 <p>
   <strong>To time:</strong>
-  <%= @appointment.to_time %>
+  <%= @appointment.end_time %>
 </p>
 
 <%= link_to 'Edit', edit_appointment_path(@appointment) %> |

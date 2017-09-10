@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  from_time: 2017-09-09 18:40:23
-  to_time: 2017-09-09 18:40:23
+  reason: MyString
+  date: 2017-09-10
+  start_time: 2017-09-10 11:42:51
+  end_time: 2017-09-10 11:42:51
 
 two:
-  from_time: 2017-09-09 18:40:23
-  to_time: 2017-09-09 18:40:23
+  reason: MyString
+  date: 2017-09-10
+  start_time: 2017-09-10 11:42:51
+  end_time: 2017-09-10 11:42:51
