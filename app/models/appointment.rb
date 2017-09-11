@@ -4,7 +4,7 @@ class Appointment < ApplicationRecord
 
   def self.get_events_data
     all.collect{|a| {
-      title: a.reason,#"#{a.start_time.strftime('%l:%M %p')} to #{a.end_time.strftime('%l:%M %p')}",
+      title: a.reason,
       start: "#{a.date.strftime('%Y-%d-%m')}T#{a.start_time.strftime('%H:%M:%S')}",
       end: "#{a.date.strftime('%Y-%d-%m')}T#{a.start_time.strftime('%H:%M:%S')}"
     }}.to_json.html_safe
