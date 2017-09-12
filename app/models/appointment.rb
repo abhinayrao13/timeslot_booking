@@ -23,7 +23,7 @@ class Appointment < ApplicationRecord
       elsif (Time.at(start_time) > Time.at(end_time))
         errors.add(:error, "Start time must be less than End Time")
       else
-        Appointment.all.each do |a|
+        Appointment.where(date: date).each do |a|
           if start_time.between?(a.start_time, a.end_time) || end_time.between?(a.start_time, a.end_time)
             errors.add(:error, "Appointment exits, Please select different time")
             break
