@@ -4,12 +4,18 @@
 <% content_for :javascript do %>
 <script>
   $(document).ready(function() {
-
     $('#calendar').fullCalendar({
       header: {
-        left: 'prev,next',
-        center: 'title',
-        right: 'month,basicWeek,today'
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,basicWeek,basicDay,basicThreeMonths'
+			},
+      views: {
+        basicThreeMonths: {
+          type: 'basic',
+          duration: { months: 3 },
+          buttonText: '3 Months'
+        }
       },
       editable: true,
 			eventLimit: true, // allow "more" link when too many events
@@ -18,7 +24,6 @@
         window.location = "/appointments/new?click=" + clickedDate;
       }
     });
-
   });
 </script>
 <% end %>
