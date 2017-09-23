@@ -1,0 +1,29 @@
+<div id='calendar'></div>
+
+
+<% content_for :javascript do %>
+<script>
+  $(document).ready(function() {
+    $('#calendar').fullCalendar({
+      header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'basicThreeMonths,month,basicWeek,basicDay'
+			},
+      views: {
+        basicThreeMonths: {
+          type: 'basic',
+          duration: { months: 3 },
+          buttonText: '3 Months'
+        }
+      },
+      editable: true,
+			eventLimit: true, // allow "more" link when too many events
+      events: <%= @events %>,
+      dayClick: function(clickedDate) {
+        window.location = "/events/new?click=" + clickedDate;
+      }
+    });
+  });
+</script>
+<% end %>
