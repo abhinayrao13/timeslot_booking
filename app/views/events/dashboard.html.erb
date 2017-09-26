@@ -3,27 +3,35 @@
 
 <% content_for :javascript do %>
 <script>
-  $(document).ready(function() {
-    $('#calendar').fullCalendar({
-      header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'basicThreeMonths,month,basicWeek,basicDay'
-			},
-      views: {
-        basicThreeMonths: {
-          type: 'basic',
-          duration: { months: 3 },
-          buttonText: '3 Months'
+$(document).ready(function() {
+  $('#calendar').fullCalendar({
+    customButtons: {
+      myCustomButton: {
+        text: 'Create Event',
+        click: function() {
+          window.location = '<%= new_event_path %>';
         }
-      },
-      editable: true,
-			eventLimit: true, // allow "more" link when too many events
-      events: <%= @events %>,
-      dayClick: function(clickedDate) {
-        window.location = "/events/new?click=" + clickedDate;
       }
-    });
+    },
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'basicThreeMonths,month,basicWeek,basicDay, myCustomButton'
+    },
+    views: {
+      basicThreeMonths: {
+        type: 'basic',
+        duration: { months: 3 },
+        buttonText: '3 Months'
+      }
+    },
+    editable: true,
+    eventLimit: true, // allow "more" link when too many events
+    events: <%= @events %>,
+    dayClick: function(clickedDate) {
+      window.location = "/events/new?click=" + clickedDate;
+    }
   });
+});
 </script>
 <% end %>

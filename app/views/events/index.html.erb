@@ -1,33 +1,50 @@
+<% content_for :css do %>
+  <style>
+  table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+  }
+
+  td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+  }
+
+  tr:nth-child(even) {
+      background-color: #dddddd;
+  }
+  </style>
+<% end %>
+<div class="pull-right">
+<%= link_to 'Home', root_path, class: "btn btn-primary" %>  <%= link_to 'New Event', new_event_path,class: "btn btn-primary" %>
+</div>
 <p id="notice"><%= notice %></p>
 
 <h1>Events</h1>
-
 <table>
   <thead>
     <tr>
       <th>Reason</th>
-      <th>Date</th>
-      <th>From time</th>
-      <th>To time</th>
-      <th></th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
     <% @events.each do |event| %>
-      <tr>
-        <td><%= event.reason %></td>
-        <td><%= event.date %></td>
-        <td><%= event.start_time %></td>
-        <td><%= event.end_time %></td>
-        <!-- <td><%#= link_to 'Show', event %></td> -->
-        <!-- <td><%#= link_to 'Edit', edit_event_path(event) %></td> -->
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= event.reason %></td>
+      <td><%= event.start_date %></td>
+      <td><%= event.end_date %></td>
+      <td><%= event.start_time %></td>
+      <td><%= event.end_time %></td>
+      <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-<%= link_to 'New Event', new_event_path %>

@@ -3,33 +3,31 @@ class EventsController < ApplicationController
   before_action :set_date, only: [:new, :create]
 
   def dashboard
-    # @appointment_events = Appointment.get_events_data
     @events = Event.get_events_data
   end
 
-  # GET /appointments
-  # GET /appointments.json
+  # GET /events
+  # GET /events.json
   def index
     @events = Event.all
   end
 
-  # GET /appointments/1
-  # GET /appointments/1.json
+  # GET /events/1
+  # GET /events/1.json
   def show
   end
 
-  # GET /appointments/new
+  # GET /events/new
   def new
-    # @appointment = Appointment.new
     @event = Event.new
   end
 
-  # GET /appointments/1/edit
+  # GET /events/1/edit
   def edit
   end
 
-  # POST /appointments
-  # POST /appointments.json
+  # POST /events
+  # POST /events.json
   def create
     @event = Event.new(event_params)
 
@@ -44,8 +42,8 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /appointments/1
-  # PATCH/PUT /appointments/1.json
+  # PATCH/PUT /events/1
+  # PATCH/PUT /events/1.json
   def update
     respond_to do |format|
       if @event.update(event_params)
@@ -58,8 +56,8 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /appointments/1
-  # DELETE /appointments/1.json
+  # DELETE /events/1
+  # DELETE /events/1.json
   def destroy
     @event.destroy
     respond_to do |format|
@@ -69,17 +67,16 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
-    def set_date
-      @clicked_date = params[:click].blank? ? DateTime.now.to_i*1000 : Time.at(params[:click].to_i).to_datetime.to_i
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:reason, :date, :start_time, :end_time)
-    end
+  def set_date
+    @clicked_date = params[:click].blank? ? DateTime.now.to_i*1000 : Time.at(params[:click].to_i).to_datetime.to_i
+  end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:reason, :start_date, :end_date, :start_time, :end_time)
+  end
 end
